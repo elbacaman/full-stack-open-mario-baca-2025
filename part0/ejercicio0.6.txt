@@ -1,0 +1,48 @@
+title Ejercicio 0.6 - Nueva nota en diagrama de aplicación de una sola pagina SPA (Mario Baca)
+
+Navegador->Servidor: SOLICITUD HTTP GET a https://studies.cs.helsinki.fi/exampleapp/spa
+Servidor-->Navegador: Servidor devuelve el codigo HTML
+
+Navegador->Servidor: SOLICITUD HTTP GET a https://studies.cs.helsinki.fi/exampleapp/main.css
+Servidor-->Navegador: Servidor devuelve el archivo main.css
+
+Navegador->Servidor: SOLICITUD HTTP GET a https://studies.cs.helsinki.fi/exampleapp/spa.js
+Servidor-->Navegador: Servidor devuelve el archivo spa.js
+
+note right of Navegador
+El navegador ejecuta el código JavaScript.
+Este codigo realiza una solicitud HTTP GET
+a la pagina https://studies.cs.helsinki.fi/exampleapp/data.json,
+que devuelve las notas como datos JSON.
+end note
+
+Navegador->Servidor: SOLICITUD HTTP GET a https://studies.cs.helsinki.fi/exampleapp/data.json
+Servidor-->Navegador: Servidor devuelve datos JSON: [{content: "qq", date: "2025-05-08T10:21:24.213Z"},…]
+
+note right of Navegador: Navegador muestra las notas.
+
+note right of Navegador
+Usuario rellena el formulario
+y hace clic en el boton SAVE.
+end note
+
+note right of Navegador
+El navegador ejecuta el código JavaScript.
+Este codigo realiza una solicitud HTTP POST
+a la pagina https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+creando una nueva nota
+end note
+
+Navegador->Servidor: SOLICITUD HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+
+note left of Servidor
+El servidor devuelve la nota creada (201 Created)
+end note
+
+
+Servidor-->Navegador: Servidor devuelve la nota creada (201 Created)
+
+note right of Navegador
+El navegador no se recarga.
+Solo se añade la nueva nota, previamente creada.
+end note
